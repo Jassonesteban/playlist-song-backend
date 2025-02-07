@@ -52,10 +52,10 @@ public class PlayListService {
 
         return playLists.stream().map(playList -> {
             List<SongDTO> songDetails = playList.getCanciones().stream()
-                    .map(song -> new SongDTO(song.getTitulo(), song.getArtista(), song.getAlbum(), song.getAnno(), song.getGenero()))
+                    .map(song -> new SongDTO(song.getId(), song.getTitulo(), song.getArtista(), song.getAlbum(), song.getAnno(), song.getGenero()))
                     .collect(Collectors.toList());
 
-            return new PlayListWithDetailsDTO(playList.getNombre(), playList.getDescripcion(), songDetails);
+            return new PlayListWithDetailsDTO(playList.getId(), playList.getNombre(), playList.getDescripcion(), songDetails);
         }).collect(Collectors.toList());
 
     }
@@ -94,7 +94,7 @@ public class PlayListService {
     }
 
     private SongDTO convertSongToDTO(Song song){
-        return new SongDTO(song.getTitulo(), song.getArtista(), song.getAlbum(),song.getAnno(), song.getGenero());
+        return new SongDTO(song.getId(), song.getTitulo(), song.getArtista(), song.getAlbum(),song.getAnno(), song.getGenero());
     }
 
     private Song convertToEntity(SongDTO songDTO){

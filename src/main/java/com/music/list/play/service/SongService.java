@@ -19,19 +19,19 @@ public class SongService {
     public SongDTO addSong(SongDTO songDTO){
         Song song = new Song(songDTO.getTitulo(), songDTO.getArtista(), songDTO.getAlbum(), songDTO.getAnno(), songDTO.getGenero());
         songRepository.save(song);
-        return new SongDTO(song.getTitulo(), song.getArtista(), song.getAlbum(), song.getAnno(), song.getGenero());
+        return new SongDTO(song.getId(), song.getTitulo(), song.getArtista(), song.getAlbum(), song.getAnno(), song.getGenero());
     }
 
     public List<SongDTO> getAllSongs() {
         List<Song> songs = songRepository.findAll();
         return songs.stream()
-                .map(song -> new SongDTO(song.getTitulo(), song.getArtista(), song.getAlbum(), song.getAnno(), song.getGenero()))
+                .map(song -> new SongDTO(song.getId(), song.getTitulo(), song.getArtista(), song.getAlbum(), song.getAnno(), song.getGenero()))
                 .collect(Collectors.toList());
     }
 
     public SongDTO getSongById(Long id) {
         Optional<Song> song = songRepository.findById(id);
-        return song.map(s -> new SongDTO(s.getTitulo(), s.getArtista(), s.getAlbum(), s.getAnno(), s.getGenero()))
+        return song.map(s -> new SongDTO(s.getId(), s.getTitulo(), s.getArtista(), s.getAlbum(), s.getAnno(), s.getGenero()))
                 .orElse(null);
     }
 
@@ -45,7 +45,7 @@ public class SongService {
             song.setAnno(songDTO.getAnno());
             song.setGenero(songDTO.getGenero());
             songRepository.save(song);
-            return new SongDTO(song.getTitulo(), song.getArtista(), song.getAlbum(), song.getAnno(), song.getGenero());
+            return new SongDTO(song.getId(), song.getTitulo(), song.getArtista(), song.getAlbum(), song.getAnno(), song.getGenero());
         }
         return null;
     }

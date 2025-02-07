@@ -3,11 +3,13 @@ package com.music.list.play.dto;
 import java.util.List;
 
 public class PlayListWithDetailsDTO {
+    private Long id;
     private String nombre;
     private String descripcion;
     private List<SongDTO> canciones;
 
-    public PlayListWithDetailsDTO(String nombre, String descripcion, List<SongDTO> canciones) {
+    public PlayListWithDetailsDTO(Long id, String nombre, String descripcion, List<SongDTO> canciones) {
+        this.id = id;
         this.nombre = nombre;
         this.canciones = canciones;
         this.descripcion = descripcion;
@@ -35,5 +37,13 @@ public class PlayListWithDetailsDTO {
 
     public void setCanciones(List<SongDTO> canciones) {
         this.canciones = canciones;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

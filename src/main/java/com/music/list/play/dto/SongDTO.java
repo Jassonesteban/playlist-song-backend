@@ -1,6 +1,7 @@
 package com.music.list.play.dto;
 
 public class SongDTO {
+    private Long id;
     private String titulo;
     private String artista;
     private String album;
@@ -9,7 +10,8 @@ public class SongDTO {
 
     public SongDTO(){}
 
-    public SongDTO(String titulo, String artista, String album, int anno, String genero) {
+    public SongDTO(Long id, String titulo, String artista, String album, int anno, String genero) {
+        this.id = id;
         this.titulo = titulo;
         this.artista = artista;
         this.album = album;
@@ -55,5 +57,13 @@ public class SongDTO {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
